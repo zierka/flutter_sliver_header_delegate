@@ -15,24 +15,19 @@ typedef FlexibleBuilder = Widget Function(
 // TODO FlexibleHeaderDelegate
 class FlexibleHeaderDelegate extends SliverPersistentHeaderDelegate {
   FlexibleHeaderDelegate({
+    required this.appBar,
     this.collapsedHeight = kToolbarHeight,
     this.expandedHeight = kToolbarHeight * 3,
     this.children,
-    this.actions,
-    this.title,
     this.backgroundColor,
     this.background,
     this.collapsedElevation = 8,
     this.expandedElevation = 0,
-    this.leading,
     this.builder,
     this.statusBarHeight = 0,
   });
 
-  final List<Widget>? actions;
-  final Widget? leading;
-  final Widget? title;
-
+  final PreferredSizeWidget appBar;
   final double expandedHeight;
   final double collapsedHeight;
   final List<Widget>? children;
@@ -74,13 +69,7 @@ class FlexibleHeaderDelegate extends SliverPersistentHeaderDelegate {
               ],
             ),
           ),
-          AppBar(
-            backgroundColor: Colors.transparent,
-            actions: actions,
-            leading: leading,
-            title: title,
-            elevation: 0,
-          ),
+          appBar,
         ],
       ),
     );
